@@ -7,6 +7,5 @@ public class CoffeeBeans
     public string CoffeeName { get; set; }
     public string GrindType { get; set; }
     public string FlavourNotes { get; set; }
-    public string Proccess { get; set; }
-    public int Score { get; set; }
+    public string Process { get; set; }
 }

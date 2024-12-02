@@ -27,6 +27,11 @@ public class HomeController : Controller
     {
         return View();
     }
+    
+    public IActionResult AddEditCoffeeBeanForm(CoffeeBeans model)
+    {
+        return RedirectToAction("CoffeeBeans");
+    }
     public IActionResult Privacy()
     {
         return View();
