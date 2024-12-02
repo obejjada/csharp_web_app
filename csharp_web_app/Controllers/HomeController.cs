@@ -17,7 +17,11 @@ public class HomeController : Controller
     {
         return View();
     }
-
+    
+    public IActionResult CoffeeBeans()
+    {
+        return View();
+    }
     public IActionResult Privacy()
     {
         return View();
