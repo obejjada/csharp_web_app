@@ -7,10 +7,12 @@ namespace csharp_web_app.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly CoffeeBeansDbContext _context;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, CoffeeBeansDbContext context)
     {
         _logger = logger;
+        _context = context;
     }
 
     public IActionResult Index()
@@ -20,7 +22,8 @@ public class HomeController : Controller
     
     public IActionResult CoffeeBeans()
     {
-        return View();
+        var allExpenses = _context.CoffeeBeans.ToList();
+        return View(allExpenses);
     }
     
     public IActionResult AddEditCoffeeBean()
@@ -30,6 +33,8 @@ public class HomeController : Controller
     
     public IActionResult AddEditCoffeeBeanForm(CoffeeBeans model)
     {
+        _context.CoffeeBeans.Add(model);
+        _context.SaveChanges();
         return RedirectToAction("CoffeeBeans");
     }
     public IActionResult Privacy()

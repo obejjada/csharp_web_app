@@ -1,3 +1,6 @@
+using csharp_web_app.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace csharp_web_app;
 
 public class Program
@@ -8,6 +11,7 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+        builder.Services.AddDbContext<CoffeeBeansDbContext>(options => options.UseInMemoryDatabase("CoffeeBeansDb"));
 
         var app = builder.Build();
 

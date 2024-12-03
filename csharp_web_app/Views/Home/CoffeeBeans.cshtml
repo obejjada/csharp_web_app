@@ -2,7 +2,61 @@
     ViewData["Title"] = "Coffee Beans";
 }
 
+@model List<CoffeeBeans>
+
 <div class="text-center">
     <h1 class="display-4">Coffee Beans</h1>
-    <a asp-action="AddEditCoffeeBean" class="btn btn-primary">Add/Edit Coffee Bean</a> 
+    <a asp-action="AddEditCoffeeBean" class="btn btn-primary">Add/Edit Coffee Bean</a>
+    <br/>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Roaster Name
+            </th>
+            <th>
+                Coffee Name
+            </th>
+            <th>
+                Grind Type
+            </th>
+            <th>
+                Flavour Notes
+            </th>
+            <th>
+                Process
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @{
+            foreach (var coffeeBean in Model )
+            {
+                <tr>
+                    <td>
+                        @coffeeBean.Id
+                    </td>
+                    <td>
+                        @coffeeBean.RoasterName
+                    </td>
+                    <td>
+                        @coffeeBean.CoffeeName
+                    </td>
+                    <td>
+                        @coffeeBean.GrindType
+                    </td>
+                    <td>
+                        @coffeeBean.FlavourNotes
+                    </td>
+                    <td>
+                        @coffeeBean.Process
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
 </div>
