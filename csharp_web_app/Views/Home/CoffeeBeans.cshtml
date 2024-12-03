@@ -54,6 +54,10 @@
                     <td>
                         @coffeeBean.Process
                     </td>
+                    <td>
+                        <a asp-action="AddEditCoffeeBean" asp-route-id="@coffeeBean.Id">Edit</a>
+                        <a asp-action="DeleteCoffeeBean" asp-route-id="@coffeeBean.Id">Delete</a> 
+                    </td>
                 </tr>
             }
         }

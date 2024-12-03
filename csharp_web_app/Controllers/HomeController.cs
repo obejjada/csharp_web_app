@@ -26,14 +26,35 @@ public class HomeController : Controller
         return View(allExpenses);
     }
     
-    public IActionResult AddEditCoffeeBean()
+    public IActionResult AddEditCoffeeBean(int? id)
     {
+        if (id != null)
+        {
+            var coffeeBeanInDb = _context.CoffeeBeans.SingleOrDefault(coffeeBean => coffeeBean.Id == id);
+            return View(coffeeBeanInDb);
+        }
+        
         return View();
     }
     
+    public IActionResult DeleteCoffeeBean(int id)
+    {
+        var coffeeBeanInDb = _context.CoffeeBeans.SingleOrDefault(coffeeBean => coffeeBean.Id == id);
+        _context.CoffeeBeans.Remove(coffeeBeanInDb);
+        _context.SaveChanges();
+        return RedirectToAction("CoffeeBeans");
+    }
     public IActionResult AddEditCoffeeBeanForm(CoffeeBeans model)
     {
-        _context.CoffeeBeans.Add(model);
+        if (model.Id == 0)
+        {
+            _context.CoffeeBeans.Add(model);
+        }
+        else
+        {
+            _context.CoffeeBeans.Update(model);
+        }
+        
         _context.SaveChanges();
         return RedirectToAction("CoffeeBeans");
     }

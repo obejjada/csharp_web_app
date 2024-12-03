@@ -8,8 +8,7 @@
 </div>
 
 <form asp-action="AddEditCoffeeBeanForm">
-    <label>Id</label>
-    <input class="form-control" type="number" placeholder="0" asp-for="Id"/>
+    <input hidden class="form-control" type="number" placeholder="0" asp-for="Id"/>
     <label>Roaster's Name</label>
     <input class="form-control" type="text" placeholder="Enter Roasters name" asp-for="RoasterName"/>
     <label>Coffee Name</label>
